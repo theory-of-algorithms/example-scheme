@@ -2,6 +2,6 @@
 *.ss#*
 .#*.ss
 
-*.scm~
-*.scm#*
-.#*.scm
+*.rkt~
+*.rkt#*
+.#*.rkt
