@@ -46,21 +46,10 @@ pi
 (quadratic 3 2 1 4)
 
 
-; Function shorthand.
+; Function definition shorthand.
 (define cube2 (lambda (x) (* x x x)))
 (define (cube3 x) (* x x x))
 
 (cube 3)
 (cube2 3)
 (cube3 3)
-
-
-
-
-
-
-
-
-
-
-
