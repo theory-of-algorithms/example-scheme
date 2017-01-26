@@ -44,3 +44,23 @@ pi
 (define quadratic (lambda (a b c x) (+ (* a x x) (* b x) c)))
 ; 3x^2 + 2x + 1 with x = 4
 (quadratic 3 2 1 4)
+
+
+; Function shorthand.
+(define cube2 (lambda (x) (* x x x)))
+(define (cube3 x) (* x x x))
+
+(cube 3)
+(cube2 3)
+(cube3 3)
+
+
+
+
+
+
+
+
+
+
+
