@@ -56,17 +56,21 @@ m
 ; Reverse - with cons only.
 (cons 1 (list 2 3))
 
-(define (revwcons l)
+(define (revwcons-aux l a)
   (if (null? l)
-    null
-    (cons (car l) (cdr l))))
+    a
+    (revwcons-aux (cdr l) (cons (car l) a))))
+
+(revwcons-aux (list 1 2 3) null)
+
+(define (revwcons l) (revwcons-aux l null))
 
 (revwcons (list 1 2 3))
 
-(list (list (list 3) 2) 1)
+(revwcons (list 'a 'b 'c))
+(revwcons '(a b c))
 
-
-
+(revwcons (list (list 1 2 3) 'b 'c))
 
 
 

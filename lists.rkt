@@ -22,6 +22,7 @@ null
 (cdr l)
 ; The second element of the list.
 (car (cdr l))
+(cadr l)
 
 ; Check if a list is empty.
 (null? l)
@@ -29,3 +30,28 @@ null
 ; True and False values in Racket.
 #t
 #f
+
+; Check if something is list (sort of).
+(pair? 1)
+(pair? (list 1))
+(pair? (list 1 2))
+(pair? (car l))
+(pair? (cdr l))
+(pair? null)
+
+; Check if something is not a list.
+(define (atom? x)
+  (if (or (pair? x) (null? x))
+      #f
+      #t))
+
+(atom? (list 1 2))
+(atom? 1)
+(atom? #t)
+(atom? null)
+
+
+; Map and Reduce
+(define (sq x) (* x x))
+(map sq (list 1 2 3 4))
+
