@@ -4,8 +4,9 @@
 
 (square 2)
 
-(map square '(1 2 3 4 5))
+(map square (list 1 2 3 4 5))
 
+; Adapted from: http://stackoverflow.com/questions/21688283/reduce-function-in-racket
 (define (reduce f z l)
   (if (null? l)
       z

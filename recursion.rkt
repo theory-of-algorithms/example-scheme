@@ -46,7 +46,7 @@
 
 ; Factorial function - recursion on a number rather than a list.
 (define (fac n)
-  (if (= n 1)
+  (if (= n 0)
       1
       (* n (fac (- n 1)))))
 ; Test it out.
