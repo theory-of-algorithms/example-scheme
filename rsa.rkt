@@ -1,14 +1,24 @@
 #lang racket
 
+; This script will contain an example of the RSA algorithm, once it's finished.
+
+; Define p and q to be two primes numbers.
 (define p 11)
 (define q 19)
 
+; n is p times q.
 (define n (* p q))
 
+; phi_n is Euler's totient function called on n: phi(n).
 (define phi_n (* (- p 1) (- q 1)))
 
-; Checks if two numbers, a and b, are coprime.
+; This function tests if two numbers, a and b, are coprime.
 (define (coprime? a b) (if (= 1 (gcd a b)) #t #f))
+
+
+; TODO
+
+
 
 (define (coprimesX k n)
   (if (= k 1)

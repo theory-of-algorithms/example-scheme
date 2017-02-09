@@ -31,7 +31,8 @@ null
 #t
 #f
 
-; Check if something is list (sort of).
+; Check if something is list.
+; Watch out for the null list.
 (pair? 1)
 (pair? (list 1))
 (pair? (list 1 2))
@@ -49,9 +50,3 @@ null
 (atom? 1)
 (atom? #t)
 (atom? null)
-
-
-; Map and Reduce
-(define (sq x) (* x x))
-(map sq (list 1 2 3 4))
-
