@@ -56,3 +56,13 @@
 
 ; Here's the discussed example being called.
 (reduce + 0 (map square '(1 2 3 4 5)))
+
+; In racket, the builtin functions foldl and foldr do what reduce does.
+; foldr is just like reduce above.
+(foldr + 0 (map square '(1 2 3 4 5)))
+(foldr + 0 (map square '(1 2 3 4 5)))
+
+; However, foldl reduces from the end of the list.
+; That means that we can use it to reverse a list.
+(foldr cons '() '(1 2 3 4))
+(foldl cons '() '(1 2 3 4))
