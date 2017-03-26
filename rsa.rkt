@@ -12,58 +12,28 @@
 ; phi_n is Euler's totient function called on n: phi(n).
 (define phi_n (* (- p 1) (- q 1)))
 
-; This function tests if two numbers, a and b, are coprime.
-(define (coprime? a b) (if (= 1 (gcd a b)) #t #f))
+; Set e to a random coprime to phi_n, 1 < e < phi_n.
+(define e (car (shuffle (filter
+  (lambda (i) (= (gcd phi_n i) 1)) (range 2 phi_n)))))
+
+; Set d to an integer with the property de = 1 mod phi_n.
+(define d (car (shuffle (filter
+  (lambda (i) (= 1 (modulo (* i e) phi_n))) (append (range 2 e) (range (+ e 1) phi_n))))))
 
 
-; TODO
+; Public key.
+(list e n)
 
+; Private key.
+(list d n)
 
+; The message.
+(define m 100)
 
-(define (coprimesX k n)
-  (if (= k 1)
-    null
-    (if (coprime? k n)
-        (cons k (coprimesX (- k 1) n))
-        (coprimesX (- k 1) n))))
-(define (coprimes n) (reverse (coprimesX n n)))
+; The encrypted message.
+(define m_enc (modulo (expt m e) n))
 
-(define cop_n (coprimes n))
+; The decrypted message.
+(define m_dec (modulo (expt m_enc d) n))
 
-(define e (list-ref cop_n (floor (/ (length cop_n) 2))))
-
-(define (privatesX d e)
-  (if (= d 1)
-      null
-      (if (= 1 (modulo (* d e) phi_n))
-          (cons d (privatesX (- d 1) e))
-          (privatesX (- d 1) e))))
-(define (privates e) (reverse (privatesX (- e 1) e)))
-(privates e)
-
-;
-;ds = [d for d in range(1, phi_n) if (d * e % phi_n) == 1]
-;# [65]
-;d = ds[0]
-;print("Private key is: %d" % d)
-;
-;print("%d x %d = %d (mod %d)" % (e, d, e * d, phi_n))
-;# 325
-;
-;print("Full public key: ", (e, n))
-;# (5, 133)
-;
-;print("Full private key: ", (d, n))
-;# (65, 133)
-;
-;m = 81
-;print("Message is %d." % m)
-;
-;c = (m**e) % n
-;print("Encrypted text is %d." % c)
-;# 131
-;
-;m_d = c**d % n
-;print("Decrypted message is %d." % m_d)
-;# 80
-;
+(list m m_enc m_dec)
