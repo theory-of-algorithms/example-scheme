@@ -5,6 +5,7 @@
 (define (square x) (* x x))
 (square 2)
 (define (quadruple x) (* x x x x))
+(quadruple 2)
 (define (twice f) (lambda (x) (f (f x))))
 ((twice square) 2)
 
