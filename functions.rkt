@@ -17,24 +17,41 @@
 (define four '(() () () ()))
 
 ; Arithmetic from The Little Schemer.
-(define sero? (lambda (n) (null? n)))
-(define edd1 (lambda (n) (cons (quote ()) n)))
-(define zub1 (lambda (n) (cdr n)))
-(define pluz (lambda (n m) (cond ((sero? m ) n) (else (edd1 (pluz n (zub1 m)))))))
+; Returns true if n represents zero.
+(define (sero? n) (null? n))
+; Adds one to a representation of n.
+(define (edd1 n) (cons null n))
+; Subtracts one from a representation of n.
+(define (zub1 n) (cdr n))
+; Adds two numbers together.
+(define (pluz n m) (if (sero? m) n (edd1 (pluz n (zub1 m)))))
 
-(sero? four)
+; Is null zero?
 (sero? null)
+; Is four zero?
+(sero? four)
+; Name zero.
 (define zero null)
 (sero? zero)
 (edd1 four)
 (zub1 four)
 (pluz four four)
 
-(define (toint x)
-  (if (null? x) 0 (+ 1 (toint (cdr x)))))
+; Convert the representations to numbers.
+(define (toint x) (if (null? x) 0 (+ 1 (toint (cdr x)))))
 (toint four)
 (toint (pluz four four))
 
+
+; variadics - writing functions with a variable number of arugments.
+(define (squares-helper l)
+  (if (null? l)
+    null
+    (cons (* (car l) (car l)) (squares-helper (cdr l)))))
+(define (squares . l) (squares-helper l))
+
+(squares-helper (list 1 2 3))
+(squares 1 2 3)
 
 ; The Little Schemer, The Sixth Commandment:
 ;   Simplify only after the function is correct.

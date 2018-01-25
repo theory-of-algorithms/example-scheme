@@ -1,7 +1,7 @@
 #lang racket
 
 ; Recursive sum function - take a list of numbers and add them.
-; Note that this function is pretty useless as + already provides this functionality.
+; Note that this function is pretty useless as + essentially already provides this functionality.
 (define (sum l)
   (if (null? l)
       0
@@ -12,7 +12,7 @@
 
 
 ; Recursive multiply function - take a list of numbers and multiply them.
-; Note that this function is pretty useless as * already provides this functionality.
+; Note that this function is pretty useless as * essentially already provides this functionality.
 (define (mult l)
   (if (null? l)
       1

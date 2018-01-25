@@ -41,7 +41,7 @@ pi
 ; Giving a function a name.
 (define plusone (lambda (x) (+ x 1)))
 
-; Using a function.
+; Using a function by its name.
 (plusone 9)
 
 ; Shorthand for defining a function - avoiding lambda.
