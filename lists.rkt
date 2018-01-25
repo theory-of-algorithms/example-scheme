@@ -4,6 +4,7 @@
 null
 
 ; Constructing a list from the empty list.
+(display "\ncons:\n")
 (cons 5 null)
 (cons 4 (cons 5 null))
 (cons 3 (cons 4 (cons 5 null)))
